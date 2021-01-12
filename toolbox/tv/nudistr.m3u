@@ -2,3 +2,5 @@
 
 #EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Adult",CCTV-1 综合
 http://223.110.243.200/PLTV/3/224/3221227634/index.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Adult",CCTV-1 综合测试
+http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv1/HD-8000k-1080P-cctv1
