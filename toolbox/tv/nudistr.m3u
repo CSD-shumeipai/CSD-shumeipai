@@ -8,6 +8,8 @@ http://ivi.bupt.edu.cn/hls/cctv2hd.m3u8
 http://ivi.bupt.edu.cn/hls/cctv3hd.m3u8
 #EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-4 中文国际
 http://ivi.bupt.edu.cn/hls/cctv4hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-5 体育
+http://hlsmgsplive.miguvideo.com:8080/wd_r2/cctv/cctv5new/600/index.m3u8
 #EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-5＋ 体育赛事
 http://ivi.bupt.edu.cn/hls/cctv5phd.m3u8
 #EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-6 电影
@@ -30,6 +32,23 @@ http://ivi.bupt.edu.cn/hls/cctv13hd.m3u8
 http://ivi.bupt.edu.cn/hls/cctv14hd.m3u8
 #EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-15 音乐
 http://ivi.bupt.edu.cn/hls/cctv15.m3u8
-
-
-
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-17 农业农村
+http://ivi.bupt.edu.cn/hls/cctv17hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CGTN
+http://ivi.bupt.edu.cn/hls/cgtnhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CGTN DOC
+http://ivi.bupt.edu.cn/hls/cgtndochd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CHC高清电影
+http://ivi.bupt.edu.cn/hls/chchd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/btv.png" tvg-name="Nudist"  group-title="sport",北京卫视
+http://ivi.bupt.edu.cn/hls/btv1hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/btv.png" tvg-name="Nudist"  group-title="sport",北京文艺
+http://ivi.bupt.edu.cn/hls/btv2hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/btv.png" tvg-name="Nudist"  group-title="sport",北京影视
+http://ivi.bupt.edu.cn/hls/btv4hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/btv.png" tvg-name="Nudist"  group-title="sport",北京新闻
+http://ivi.bupt.edu.cn/hls/btv9hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/btv.png" tvg-name="Nudist"  group-title="sport",卡酷少儿
+http://ivi.bupt.edu.cn/hls/btv9hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/btv.png" tvg-name="Nudist"  group-title="sport",冬奥纪实
+http://ivi.bupt.edu.cn/hls/btv11hd.m3u8
