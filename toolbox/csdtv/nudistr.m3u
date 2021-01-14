@@ -1,0 +1,124 @@
+﻿#EXTM3U
+
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-1 综合
+http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-2 财经
+http://ivi.bupt.edu.cn/hls/cctv2hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-3 综艺
+http://ivi.bupt.edu.cn/hls/cctv3hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-4 中文国际
+http://ivi.bupt.edu.cn/hls/cctv4hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-5＋ 体育赛事
+http://ivi.bupt.edu.cn/hls/cctv5phd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-6 电影
+http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-7 国防军事
+http://ivi.bupt.edu.cn/hls/cctv7hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-8 电视剧
+http://ivi.bupt.edu.cn/hls/cctv8hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-9 记录
+http://ivi.bupt.edu.cn/hls/cctv9hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-10 科教
+http://ivi.bupt.edu.cn/hls/cctv10hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-11 戏曲
+http://ivi.bupt.edu.cn/hls/cctv11hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-12 社会与法
+http://ivi.bupt.edu.cn/hls/cctv12hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-13 新闻
+http://ivi.bupt.edu.cn/hls/cctv13hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-14 少儿
+http://ivi.bupt.edu.cn/hls/cctv14hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-15 音乐
+http://ivi.bupt.edu.cn/hls/cctv15.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CCTV-17 农业农村
+http://ivi.bupt.edu.cn/hls/cctv17hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CGTN
+http://ivi.bupt.edu.cn/hls/cgtnhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CGTN DOC
+http://ivi.bupt.edu.cn/hls/cgtndochd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cctv.png" tvg-name="Nudist"  group-title="Documentary",CHC高清电影
+http://ivi.bupt.edu.cn/hls/chchd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/btv.png" tvg-name="Nudist"  group-title="sport",北京卫视
+http://ivi.bupt.edu.cn/hls/btv1hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/btv.png" tvg-name="Nudist"  group-title="sport",北京文艺
+http://ivi.bupt.edu.cn/hls/btv2hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/btv.png" tvg-name="Nudist"  group-title="sport",北京影视
+http://ivi.bupt.edu.cn/hls/btv4hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/btv.png" tvg-name="Nudist"  group-title="sport",北京新闻
+http://ivi.bupt.edu.cn/hls/btv9hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/btv.png" tvg-name="Nudist"  group-title="sport",卡酷少儿
+http://ivi.bupt.edu.cn/hls/btv10.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/btv.png" tvg-name="Nudist"  group-title="sport",冬奥纪实
+http://ivi.bupt.edu.cn/hls/btv11hd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/hunws.png" tvg-name="Nudist"  group-title="sport",湖南卫视
+http://ivi.bupt.edu.cn/hls/hunanhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/jiamgsws.png" tvg-name="Nudist"  group-title="sport",江苏卫视
+http://ivi.bupt.edu.cn/hls/jshd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/dfws.png" tvg-name="Nudist"  group-title="sport",东方卫视
+http://ivi.bupt.edu.cn/hls/dfhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/ahws.png" tvg-name="Nudist"  group-title="sport",安徽卫视
+http://ivi.bupt.edu.cn/hls/ahhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/hljws.png" tvg-name="Nudist"  group-title="sport",黑龙江卫视
+http://ivi.bupt.edu.cn/hls/hljhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/lnws.png" tvg-name="Nudist"  group-title="sport",辽宁卫视
+http://ivi.bupt.edu.cn/hls/lnhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/sxtv.png" tvg-name="Nudist"  group-title="sport",陕西卫视
+http://ivi.bupt.edu.cn/hls/sxtv.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/szws.png" tvg-name="Nudist"  group-title="sport",深圳卫视
+http://ivi.bupt.edu.cn/hls/szhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/gdws.png" tvg-name="Nudist"  group-title="sport",广东卫视
+http://ivi.bupt.edu.cn/hls/gdhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/xzws.png" tvg-name="Nudist"  group-title="sport",西藏卫视
+http://ivi.bupt.edu.cn/hls/xztv.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/nmgws.png" tvg-name="Nudist"  group-title="sport",内蒙古卫视
+http://ivi.bupt.edu.cn/hls/nmtv.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/tjws.png" tvg-name="Nudist"  group-title="sport",天津卫视
+http://ivi.bupt.edu.cn/hls/tjhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/hbws.png" tvg-name="Nudist"  group-title="sport",湖北卫视
+http://ivi.bupt.edu.cn/hls/hbhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/sdws.png" tvg-name="Nudist"  group-title="sport",山东卫视
+http://ivi.bupt.edu.cn/hls/sdhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/cqws.png" tvg-name="Nudist"  group-title="sport",重庆卫视
+http://ivi.bupt.edu.cn/hls/cqhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/fjdnws.png" tvg-name="Nudist"  group-title="sport",福建东南卫视
+http://ivi.bupt.edu.cn/hls/dnhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/scws.png" tvg-name="Nudist"  group-title="sport",四川卫视
+http://ivi.bupt.edu.cn/hls/schd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/qhws.png" tvg-name="Nudist"  group-title="sport",青海卫视
+http://ivi.bupt.edu.cn/hls/qhtv.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/shanxws.png" tvg-name="Nudist"  group-title="sport",山西卫视
+http://ivi.bupt.edu.cn/hls/sxrtv.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/xmws.png" tvg-name="Nudist"  group-title="sport",厦门卫视
+http://ivi.bupt.edu.cn/hls/xmtv.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/xjws.png" tvg-name="Nudist"  group-title="sport",新疆卫视
+http://ivi.bupt.edu.cn/hls/xjtv.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/hebws.png" tvg-name="Nudist"  group-title="sport",河北卫视
+http://ivi.bupt.edu.cn/hls/hebhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/jxws.png" tvg-name="Nudist"  group-title="sport",江西卫视
+http://ivi.bupt.edu.cn/hls/jxws.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/gzws.png" tvg-name="Nudist"  group-title="sport",贵州卫视
+http://ivi.bupt.edu.cn/hls/gztv.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/nxws.png" tvg-name="Nudist"  group-title="sport",宁夏卫视
+http://ivi.bupt.edu.cn/hls/nxtv.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/gsws.png" tvg-name="Nudist"  group-title="sport",甘肃卫视
+http://ivi.bupt.edu.cn/hls/gstv.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/btws.png" tvg-name="Nudist"  group-title="sport",兵团卫视
+http://ivi.bupt.edu.cn/hls/bttv.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/ybws.png" tvg-name="Nudist"  group-title="sport",延边卫视
+http://ivi.bupt.edu.cn/hls/ybtv.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/ssws.png" tvg-name="Nudist"  group-title="sport",三沙卫视
+http://ivi.bupt.edu.cn/hls/sstv.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/hainws.png" tvg-name="Nudist"  group-title="sport",海南卫视
+http://ivi.bupt.edu.cn/hls/lytv.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/ynws.png" tvg-name="Nudist"  group-title="sport",云南卫视
+http://ivi.bupt.edu.cn/hls/yntv.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/hnws.png" tvg-name="Nudist"  group-title="sport",河南卫视
+http://ivi.bupt.edu.cn/hls/hnhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/gxws.png" tvg-name="Nudist"  group-title="sport",广西卫视
+http://ivi.bupt.edu.cn/hls/gxhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/jlws.png" tvg-name="Nudist"  group-title="sport",吉林卫视
+http://ivi.bupt.edu.cn/hls/jlhd.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/shjs.png" tvg-name="Nudist"  group-title="sport",上海纪实
+http://ivi.bupt.edu.cn/hls/docuchina.m3u8
+#EXTINF:-1, tvg-id="Nudist" tvg-logo="logos/jyjs.png" tvg-name="Nudist"  group-title="sport",金鹰纪实
+http://ivi.bupt.edu.cn/hls/gedocu.m3u8
