@@ -4,11 +4,13 @@
 <head>
     <meta charset="utf-8">
 
-    <title>合成小狐狸</title>
+    <title>合成大西瓜</title>
 
     <!--http://www.html5rocks.com/en/mobile/mobifying/-->
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1" />
-
+    <script src="//cdn.staticfile.org/jquery/1.12.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/layer/3.0.1/layer.min.js"></script>
+    <link href="//cdn.bootcss.com/layer/3.0.1/skin/default/layer.css" rel="stylesheet">
     <!--https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html-->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -37,31 +39,17 @@
     <!--<link rel="apple-touch-icon" href=".png" />-->
     <!--<link rel="apple-touch-icon-precomposed" href=".png" />-->
 
-
-    <!-- <script>
-        pushHistory();
-        window.addEventListener("popstate", function(e) {
-
-        }, false);
-        function pushHistory() {
-            var state = {
-                title: "",
-                url: window.location.href
-            };
-            window.history.pushState(state, state.title, state.url);
-        }
-    </script> -->
-<!--    <script type="text/javascript">
-        var ua = navigator.userAgent.toLowerCase(); //获取判断用的对象
-        //判断是否是微信下访问
-        if (ua.match(/MicroMessenger/i) == "micromessenger") {
-            // if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-            location.href = "https://mp.weixin.qq.com/s/m0U0L-vnD0Gu8aPJ2vcPoA";
-            // }
-        }
-    </script>-->
-
     <link rel="stylesheet" type="text/css" href="style-mobile.css" />
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?4aea58923adb4549b0219d5e4903051c";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 
 </head>
 
@@ -102,6 +90,37 @@
     <script src="src/settings.js" charset="utf-8"></script>
 
     <script type="text/javascript">
+        window.difficulty = [6, 6];
+        window.ratio = [6, 1];
+        function changeDifficulty(ele, diff, r) {
+          $('[name=difficulty]').css('background-color', '');
+          $(ele).css('background-color', '#1E9FFF');
+          window.difficulty = diff;
+          window.ratio = r;
+        }
+    
+        layer.open({
+            type: 1
+            , title: false //不显示标题栏
+            , closeBtn: false
+            , area: '300px;'
+            , shade: 0.8
+            , id: 'layer1' //设定一个id，防止重复弹出
+            , resize: false
+            , btn: ['➡ 开始']
+            , btnAlign: 'c'
+            , shadeClose: true //开启遮罩关闭
+            , moveType: 1 //拖拽模式，0或者1
+            , content:
+              '<div style="padding: 45px;text-align:center; line-height: 25px; background-color: #393D49; color: #fff; font-weight: 300;"><h4>🦊 设置模式</h4>'
+              + '<button name="difficulty" onclick="changeDifficulty(this,[0,5], [1,1])">正常的狐狸</button><br>'
+              + '<button name="difficulty" style="background-color:#1E9FFF" onclick="changeDifficulty(this,[6,6], [5,1])">温柔的狐狸</button><br>'
+              + '<button name="difficulty" onclick="changeDifficulty(this,[9,9],[10,2])">嗜血神兽</button><br>'
+              + '</div>',
+            success: function (layero) {
+            }
+        });
+
         var preloader;
         var adCompleteFlag = false;
         var resCompleteFlag = false;
@@ -128,7 +147,7 @@
             } else if (window.navigator.language == "th-TH") {
                 document.title = "合成小狐狸";
             } else {
-                document.title = "Little game：Synthetic watermelon";
+                document.title = "合成小狐狸";
             }
 
 
@@ -202,7 +221,7 @@
                 if (tempSeconds > 100) {
                     clearInterval(timer);
                     tempSeconds = 100
-                    loadintT.innerHTML = '在......' + parseInt(tempSeconds) + '%';
+                    loadintT.innerHTML = 'loading......' + parseInt(tempSeconds) + '%';
                 }
             }, t * 1000);
         }
@@ -223,7 +242,6 @@
 
 
     <script src="src/settings.js" charset="utf-8"></script>
-    <script src="src/extraSettings.js" charset="utf-8"></script>
 
     <script src="main.js" charset="utf-8"></script>
 
@@ -262,8 +280,6 @@
             document.body.appendChild(cocos2d);
         })();
     </script>
-
-
 
 
 </body>
