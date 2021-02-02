@@ -81,7 +81,7 @@
         window.ratio = [6, 1];
         function changeDifficulty(ele, diff, r) {
           $('[name=difficulty]').css('background-color', '');
-          $(ele).css('background-color', '#1E9FFF');
+          $(ele).css('background-color', '#2E8DED');
           window.difficulty = diff;
           window.ratio = r;
         }
@@ -99,7 +99,7 @@
             , shadeClose: true 
             , moveType: 1 
             , content:
-              '<div style="padding: 45px;text-align:center; line-height: 25px; background-color: #393D49; color: #fff; font-weight: 300;"><h4>🦊 设置模式</h4>'
+              '<div style="padding: 45px;text-align:center; line-height: 25px; background-color: #BE7754; color: #FFFFFF; font-weight: 300;"><h4>🦊合成小狐狸</h4><h4>设置游戏模式:</h4>'
               + '<button name="difficulty" onclick="changeDifficulty(this,[0,5], [1,1])">正常狐狸</button><br>'
               + '<button name="difficulty" style="background-color:#1E9FFF" onclick="changeDifficulty(this,[6,6], [5,1])">温顺狐狸</button><br>'
               + '<button name="difficulty" onclick="changeDifficulty(this,[9,9],[10,2])">嗜血神兽</button><br>'
