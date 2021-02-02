@@ -16,14 +16,11 @@ div {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-/* Remove spin of input type number */
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
     margin: 0;
-    /* <-- Apparently some margin are still there even though it's hidden */
 }
 
 body {
@@ -42,9 +39,6 @@ body {
     font-family: Helvetica, Verdana, Arial, sans-serif;
     display: flex;
     flex-direction: column;
-    /* fix bug: https://github.com/cocos-creator/2d-tasks/issues/791 */
-    /* overflow cannot be applied in Cocos2dGameContainer, 
-  otherwise child elements will be hidden when Cocos2dGameContainer rotated 90 deg */
     overflow: hidden;
 }
 

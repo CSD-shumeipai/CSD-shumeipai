@@ -13,7 +13,6 @@ function noAdGoToScene() {
             adCompleteFlag = false;
 
             if (Bros) {
-                // show canvas
                 var canvas = document.getElementById('GameCanvas');
                 canvas.style.visibility = '';
                 var div = document.getElementById('GameDiv');
