@@ -95,7 +95,7 @@ input[type=text]:focus {
         </div>
 
         <p>将鼠标悬停在文本上以获取更多信息。<br>
-        <a href ="https://github.com/ScroogeD2/owmidiconverter#how-to-use" target="_blank" class="button button2" >单击此处获取说明</a></p>
+        </p>
 
         <div class="center">
             <div class="tooltipWrapper">
@@ -118,7 +118,8 @@ input[type=text]:focus {
                 </div>
             </div>
             <select class="dropbtn" id="languageInput"">
-                <option selected value="en-US">English</option>
+                <option selected value="zh-CN">简体中文</option>
+                <option value="zh-TW">繁體中文</option>
                 <option value="es-ES">Español (EU)</option>
                 <option value="es-MX">Español (AL)</option>
                 <option value="it-IT">Italiano</option>
@@ -129,8 +130,6 @@ input[type=text]:focus {
                 <option value="pt-BR">Português</option>
                 <option value="ja-JP">日本語</option>
                 <option value="ko-KR">한국어</option>
-                <option value="zh-TW">繁體中文</option>
-                <option value="zh-CN">简体中文</option>
             </select>
         </div>
 
@@ -154,24 +153,24 @@ input[type=text]:focus {
 
                 <div class="tooltipWrapper">
                     <div class="tooltip">限制玩家位置
-                        <span class="tooltipText">根据播放歌曲的机器人数量，从游戏中删除玩家的位置。禁用此功能可能会导致机器人在新玩家加入已经完整的游戏时自动消失。</span>
+                        <span class="tooltipText">根据播放歌曲的机器人数量，从游戏中删除玩家的位置。禁用此功能可能会导致机器人在新玩家加入人满了的游戏时自动消失。</span>
                     </div>
                 </div>
                 <input class="checkboxInput" type="checkbox" id="restrictSlotsCheckbox" checked>
 
                 <div class="tooltipWrapper">
                     <div class="tooltip">选择钢琴：
-                        <span class="tooltipText">Select the piano in Paris that the bots will play.</span>
+                        <span class="tooltipText">选择机器人将在巴黎弹奏的钢琴。</span>
                     </div>
                 </div>
                 <select class="dropdownInput" id="pianoSelectInput">
-                    <option value="pointA">A点</option>
-                    <option selected value="pointB">B点</option>
+                    <option value="pointA">目标点：A</option>
+                    <option selected value="pointB">目标点：B</option>
                 </select>
 
                 <div class="tooltipWrapper">
-                    <div class="tooltip">禁用玩家的能力
-                        <span class="tooltipText">禁用所有能力，终极攻击，近战攻击以及初级和次级射击。</span>
+                    <div class="tooltip">禁用玩家技能
+                        <span class="tooltipText">禁用所有技能，终极技能，近战攻击以及主技能和复技能。</span>
                     </div>
                 </div>
                 <input class="checkboxInput" type="checkbox" id="restrictAbilitiesCheckbox">
