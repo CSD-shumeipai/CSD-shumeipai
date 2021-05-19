@@ -1,0 +1,425 @@
+设置
+{
+	主程序
+	{
+		描述: "Overwatch MIDI Pianist mode by ScroogeD. Convert MIDI songs to Overwatch piano songs with this converter on GitHub: github.com/ScroogeD2/owmidiconverter"
+	}
+	大厅
+	{
+		队列中的玩家可以加入: 是
+		比赛语音聊天: 启用
+		玩家上限 队伍1: 6
+		玩家上限 队伍2: 0
+		返回大厅: 从不
+	}
+	模式
+	{
+		突击模式
+		{
+			启用地图
+			{
+				巴黎
+			}
+		}
+		综合
+		{
+			比赛模式开始: 手动
+			英雄限制: 关闭
+			复活时间: 30%
+		}
+	}
+	英雄
+	{
+		综合
+		{
+			技能冷却时间: 0%
+			无需装弹: 开启
+			终极技能充能速度: 250%
+		}
+	}
+}
+变量 {
+    全局:
+        0: notePositions
+        1: botSpawn
+        2: bots
+        3: speedPercent
+        4: songPlayingState
+        5: timeArrayIndex
+        6: playerSpawn
+        7: i
+        8: pitchArrayIndex
+        9: botScalar
+        10: maxArraySize
+        11: banTpLocation
+        12: currentBotIndex
+        13: waitTime
+        14: timeArrays
+        15: pitchArrays
+        16: chordArrays
+        17: maxBots
+        18: defaultHorizontalFacingAngle
+        28: hasDecompressionFinished
+        29: decompressionPercentages
+        30: isCompressionEnabled
+        31: numberArray
+        32: decompressedValue
+        33: compressedArrayLength
+        34: decompressedArray
+        35: compressedElementLength
+        36: songDataElementLength
+        37: compressedArray
+        38: compressionInfo
+        39: finalCompressedElementLength
+        40: I
+        41: J
+        42: K
+    玩家:
+        1: playNote
+        2: currentPitchIndex
+        3: playerToRemove
+        4: currentKeyPos
+}
+子程序 {
+    0: endSong
+    1: decompressArray
+}
+规则 ("Global init") {
+    事件 {
+        持续 - 全局;
+    }
+    动作 {
+        禁用查看器录制;
+        关闭游戏预设音乐模式;
+        "Global.botScalar = 0.100;"
+        设置全局变量(bots, 空数组);
+        设置全局变量(speedPercent, 100);
+        设置全局变量(hasDecompressionFinished, 假);
+        创建HUD文本(所有玩家(所有队伍), 无, 无, 自定义字符串("Speed: {0}%", 全局.speedPercent, 无, 无), 右边, 0, 无, 无, 颜色(白色), 可见和字符串, 默认可见度);
+        创建HUD文本(所有玩家(所有队伍), 无, 无, 自定义字符串("Host player: Press Interact to start and stop the song, \nand Crouch+Primary or Crouch+Secondary Fire to change speed", 无, 无, 无), 顶部, 0, 无, 无, 颜色(白色), 可见和字符串, 默认可见度);
+        创建HUD文本(所有玩家(所有队伍), 无, 自定义字符串("By ScroogeD", 无, 无, 无), 无, 左边, 0, 无, 颜色(黄色), 无, 可见和字符串, 默认可见度);
+        创建HUD文本(所有玩家(所有队伍), 无, 自定义字符串("Website: github.com/ScroogeD2/owmidiconverter", 无, 无, 无), 无, 左边, 1, 无, 颜色(黄色), 无, 可见和字符串, 默认可见度);
+        创建HUD文本(已过滤的数组(所有玩家(所有队伍), 具有状态(当前数组元素, 冰冻)), 自定义字符串("The host player has decided to remove you temporarily. Please wait a minute before rejoining.", 无, 无, 无), 无, 无, 顶部, 1, 颜色(白色), 无, 无, 可见和字符串, 默认可见度);
+        创建HUD文本(If-Then-Else(全局.hasDecompressionFinished, 空数组, 主机玩家), 无, 无, 自定义字符串(" \n\n\nDecompressing\nPitch Arrays      {0}%\nTime Arrays        {1}%\nChord Arrays   {2}%", 首个(全局.decompressionPercentages), 数组中的值(全局.decompressionPercentages, 1), 数组中的值(全局.decompressionPercentages, 2)), 顶部, 10, 无, 无, 颜色(白色), 可见和字符串, 默认可见度);
+        设置全局变量(decompressionPercentages, 数组(0, 0, 0));
+    }
+}
+
+规则 ("Player init") {
+    事件 {
+        持续 - 每名玩家;
+        双方;
+        全部;
+    }
+    条件 {
+        是否是机器人(事件玩家) == 假;
+        已重生(事件玩家) == 真;
+        存活(事件玩家) == 真;
+    }
+    动作 {
+        传送(事件玩家, 全局.playerSpawn);
+        取消与玩家的移动碰撞(事件玩家);
+        等待(0.016, 无视条件);
+        设置朝向(事件玩家, 与此角度的相对方向(全局.defaultHorizontalFacingAngle, 垂直朝向角度(事件玩家)), 至地图);
+        预加载英雄(事件玩家, 英雄(秩序之光));
+    }
+}
+
+规则 ("Dummy init") {
+    事件 {
+        持续 - 每名玩家;
+        双方;
+        全部;
+    }
+    条件 {
+        是否是机器人(事件玩家) == 真;
+    }
+    动作 {
+        传送(事件玩家, 全局.botSpawn);
+        取消与环境的移动碰撞(事件玩家, 假);
+        取消与玩家的移动碰撞(事件玩家);
+        开始调整玩家大小(事件玩家, 全局.botScalar, 真);
+        等待(0.016, 无视条件);
+        设置朝向(事件玩家, 与此角度的相对方向(全局.defaultHorizontalFacingAngle, 89), 至地图);
+    }
+}
+
+规则 ("Primary fire: increase speed") {
+    事件 {
+        持续 - 全局;
+    }
+    条件 {
+        按钮被按下(主机玩家, 按钮(蹲下)) == 真;
+        按钮被按下(主机玩家, 按钮(主要攻击模式)) == 真;
+    }
+    动作 {
+        修改全局变量(speedPercent, 加, 5);
+    }
+}
+
+规则 ("Secondary fire: decrease speed") {
+    事件 {
+        持续 - 全局;
+    }
+    条件 {
+        按钮被按下(主机玩家, 按钮(蹲下)) == 真;
+        按钮被按下(主机玩家, 按钮(辅助攻击模式)) == 真;
+        全局.speedPercent > 5;
+    }
+    动作 {
+        修改全局变量(speedPercent, 减, 5);
+    }
+}
+
+规则 ("Interact: create dummy bots, start playing") {
+    事件 {
+        持续 - 全局;
+    }
+    条件 {
+        按钮被按下(主机玩家, 按钮(互动)) == 真;
+        全局.songPlayingState == 0;
+        或(非(全局.isCompressionEnabled), 全局.hasDecompressionFinished) == 真;
+    }
+    动作 {
+        "States:\n0: song not playing\n1: Preparing to play, creating bots\n2: song playing"
+        设置全局变量(songPlayingState, 1);
+        设置全局变量(i, 11);
+        While(与(比较(数量(全局.bots), <, 全局.maxBots), 比较(全局.i, >, 0)));
+            If(非(实体存在(此栏位的玩家(全局.i, 所有队伍))));
+                生成机器人(英雄(秩序之光), 颜色(队伍1), 全局.i, 全局.botSpawn, 矢量(0, 0, 0));
+                修改全局变量(bots, 添加至数组, 最后创建的实体);
+            End;
+            修改全局变量(i, 减, 1);
+            等待(0.016, 无视条件);
+        End;
+        等待(1, 无视条件);
+        设置全局变量(songPlayingState, 2);
+    }
+}
+
+规则 ("Interact: stop playing") {
+    事件 {
+        持续 - 全局;
+    }
+    条件 {
+        按钮被按下(主机玩家, 按钮(互动)) == 真;
+        全局.songPlayingState == 2;
+    }
+    动作 {
+        调用子程序(endSong);
+    }
+}
+
+规则 ("Play loop") {
+    事件 {
+        持续 - 全局;
+    }
+    条件 {
+        全局.songPlayingState == 2;
+    }
+    动作 {
+        "continue\nvalue = songArray[math.floor(index / maxArraySize)][index % maxArraySize]\ncontinue\nWhile((index < 2dArrayLength) && songPlayingState)"
+        While(与(比较(全局.timeArrayIndex, <, 加(乘(全局.maxArraySize, 减(数量(全局.timeArrays), 1)), 数量(最后(全局.timeArrays)))), 全局.songPlayingState));
+            修改全局变量(waitTime, 加, 乘(除(数组中的值(数组中的值(全局.timeArrays, 取整(除(全局.timeArrayIndex, 全局.maxArraySize), 下)), 余数(全局.timeArrayIndex, 全局.maxArraySize)), 1000), 除(100, 全局.speedPercent)));
+            While(比较(全局.waitTime, >=, 0.016));
+                等待(0.016, 无视条件);
+                修改全局变量(waitTime, 减, 0.016);
+            End;
+            "Loop as many times as there are pitches in the current chord, as indicated by the value in chordArrays. Assign the pitches to the bots."
+            For 全局变量(i, 0, 数组中的值(数组中的值(全局.chordArrays, 取整(除(全局.timeArrayIndex, 全局.maxArraySize), 下)), 余数(全局.timeArrayIndex, 全局.maxArraySize)), 1);
+                设置玩家变量(数组中的值(全局.bots, 全局.currentBotIndex), currentPitchIndex, 全局.pitchArrayIndex);
+                设置玩家变量(数组中的值(全局.bots, 全局.currentBotIndex), playNote, 真);
+                设置全局变量(currentBotIndex, 余数(加(全局.currentBotIndex, 1), 数量(全局.bots)));
+                修改全局变量(pitchArrayIndex, 加, 1);
+            End;
+            修改全局变量(timeArrayIndex, 加, 1);
+        End;
+        等待(0.25, 无视条件);
+        调用子程序(endSong);
+    }
+}
+
+规则 ("Stop playing") {
+    事件 {
+        子程序;
+        endSong;
+    }
+    动作 {
+        For 全局变量(i, 0, 12, 1);
+            移除机器人(颜色(队伍1), 全局.i);
+        End;
+        设置全局变量(bots, 空数组);
+        等待(0.3, 无视条件);
+        设置全局变量(songPlayingState, 0);
+        设置全局变量(timeArrayIndex, 0);
+        设置全局变量(pitchArrayIndex, 0);
+        设置全局变量(waitTime, 0);
+    }
+}
+
+规则 ("Play note") {
+    事件 {
+        持续 - 每名玩家;
+        双方;
+        全部;
+    }
+    条件 {
+        是否是机器人(事件玩家) == 真;
+        (事件玩家).playNote == 真;
+    }
+    动作 {
+        设置玩家变量(事件玩家, currentKeyPos, 数组中的值(全局.notePositions, 数组中的值(数组中的值(全局.pitchArrays, 取整(除((事件玩家).currentPitchIndex, 全局.maxArraySize), 下)), 余数((事件玩家).currentPitchIndex, 全局.maxArraySize))));
+        传送(事件玩家, (事件玩家).currentKeyPos);
+        等待(0.032, 无视条件);
+        开始按下按钮(事件玩家, 按钮(主要攻击模式));
+        等待(0.032, 无视条件);
+        停止按下按钮(事件玩家, 按钮(主要攻击模式));
+        设置玩家变量(事件玩家, playNote, 假);
+    }
+}
+
+规则 ("Race condition workaround for very high playing speeds") {
+    事件 {
+        持续 - 每名玩家;
+        双方;
+        全部;
+    }
+    条件 {
+        (事件玩家).playNote == 真;
+    }
+    动作 {
+        等待(0.2, 当为“假”时中止);
+        设置玩家变量(事件玩家, playNote, 假);
+        循环;
+    }
+}
+
+规则 ("Decompress all arrays") {
+    事件 {
+        持续 - 全局;
+    }
+    动作 {
+        等待(0.25, 无视条件);
+        根据条件中止(非(全局.isCompressionEnabled));
+        "Decompress pitch arrays, time arrays and chord arrays"
+        For 全局变量(i, 0, 3, 1);
+            设置全局变量(compressedArray, 空数组);
+            For 全局变量(I, 0, 数量(数组中的值(数组(全局.pitchArrays, 全局.timeArrays, 全局.chordArrays), 全局.i)), 1);
+                在索引处设置全局变量(compressedArray, 全局.I, 数组中的值(数组中的值(数组(全局.pitchArrays, 全局.timeArrays, 全局.chordArrays), 全局.i), 全局.I));
+            End;
+            设置全局变量(finalCompressedElementLength, 数组中的值(首个(全局.compressionInfo), 全局.i));
+            设置全局变量(songDataElementLength, 数组中的值(数组中的值(全局.compressionInfo, 1), 全局.i));
+            调用子程序(decompressArray);
+            For 全局变量(I, 0, 数量(全局.decompressedArray), 1);
+                If(比较(全局.i, ==, 0));
+                    在索引处设置全局变量(pitchArrays, 全局.I, 数组中的值(全局.decompressedArray, 全局.I));
+                Else If(比较(全局.i, ==, 1));
+                    在索引处设置全局变量(timeArrays, 全局.I, 数组中的值(全局.decompressedArray, 全局.I));
+                Else If(比较(全局.i, ==, 2));
+                    在索引处设置全局变量(chordArrays, 全局.I, 数组中的值(全局.decompressedArray, 全局.I));
+                End;
+            End;
+            设置全局变量(compressedArray, 空数组);
+            在索引处设置全局变量(decompressionPercentages, 全局.i, 100);
+        End;
+        设置全局变量(decompressedArray, 空数组);
+        设置全局变量(hasDecompressionFinished, 真);
+    }
+}
+
+规则 ("Decompress array") {
+    事件 {
+        子程序;
+        decompressArray;
+    }
+    动作 {
+        "Target array for the decompressed data"
+        设置全局变量(decompressedArray, 空数组);
+        在索引处设置全局变量(decompressedArray, 0, 空数组);
+        "Current decompressedArray index being written to (max of 1000 elements per index)"
+        设置全局变量(K, 0);
+        "Array for saving individual digits of the element being decompressed"
+        设置全局变量(numberArray, 空数组);
+        设置全局变量(compressedArrayLength, 加(乘(全局.maxArraySize, 减(数量(全局.compressedArray), 1)), 数量(最后(全局.compressedArray))));
+        For 全局变量(I, 0, 全局.compressedArrayLength, 1);
+            "Read the compressed element from left to right, append individual digits to numberArray. If this is the last array value, use a different variable to check its length."
+            For 全局变量(J, 0, If-Then-Else(比较(全局.I, ==, 减(全局.compressedArrayLength, 1)), 全局.finalCompressedElementLength, 全局.compressedElementLength), 1);
+                修改全局变量(numberArray, 添加至数组, 余数(取整(除(数组中的值(数组中的值(全局.compressedArray, 取整(除(全局.I, 全局.maxArraySize), 下)), 余数(全局.I, 全局.maxArraySize)), 乘方(10, 减(减(If-Then-Else(比较(全局.I, ==, 减(全局.compressedArrayLength, 1)), 全局.finalCompressedElementLength, 全局.compressedElementLength), 1), 全局.J))), 下), 10));
+            End;
+            While(比较(数量(全局.numberArray), >=, 全局.songDataElementLength));
+                设置全局变量(decompressedValue, 0);
+                "Construct the original numbers by reading numberArray x elements at a time"
+                For 全局变量(J, 0, 全局.songDataElementLength, 1);
+                    修改全局变量(decompressedValue, 加, 乘(首个(全局.numberArray), 乘方(10, 减(减(全局.songDataElementLength, 1), 全局.J))));
+                    修改全局变量(numberArray, 根据索引从数组中移除, 0);
+                End;
+                在索引处修改全局变量(decompressedArray, 全局.K, 添加至数组, 全局.decompressedValue);
+                If(比较(数量(数组中的值(全局.decompressedArray, 全局.K)), >=, 全局.maxArraySize));
+                    修改全局变量(K, 加, 1);
+                    在索引处设置全局变量(decompressedArray, 全局.K, 空数组);
+                End;
+            End;
+            "Wait a frame every 25th element to avoid high server load"
+            If(比较(余数(全局.I, 25), ==, 0));
+                等待(0.016, 无视条件);
+                "Update decomrpession progress HUD"
+                在索引处设置全局变量(decompressionPercentages, 全局.i, 除(乘(100, 全局.I), 全局.compressedArrayLength));
+            End;
+        End;
+    }
+}
+
+规则 ("Note positions array init, Point B") {
+    事件 {
+        持续 - 全局;
+    }
+    动作 {
+        设置全局变量(notePositions, 数组(矢量(-85.41, 13.884, -108.012), 矢量(-85.364, 13.896, -108.079), 矢量(-85.368, 13.886, -108.007), 矢量(-85.328, 13.897, -108.078), 矢量(-85.325, 13.888, -108.008), 矢量(-85.29, 13.887, -107.989), 矢量(-85.247, 13.897, -108.05), 矢量(-85.256, 13.885, -107.965), 矢量(-85.217, 13.895, -108.021), 矢量(-85.21, 13.888, -107.968), 矢量(-85.18, 13.895, -108.007), 矢量(-85.184, 13.883, -107.928), 矢量(-85.147, 13.883, -107.916), 矢量(-85.095, 13.895, -107.977), 矢量(-85.107, 13.883, -107.91), 矢量(-85.063, 13.896, -107.973), 矢量(-85.066, 13.884, -107.902), 矢量(-85.017, 13.886, -107.891), 矢量(-84.979, 13.896, -107.954), 矢量(-84.987, 13.884, -107.866), 矢量(-84.943, 13.896, -107.938), 矢量(-84.952, 13.884, -107.854), 矢量(-84.908, 13.896, -107.922), 矢量(-84.902, 13.886, -107.851), 矢量(-84.871, 13.885, -107.836), 矢量(-84.826, 13.895, -107.887), 矢量(-84.832, 13.885, -107.822), 矢量(-84.787, 13.897, -107.894), 矢量(-84.795, 13.886, -107.812), 矢量(-84.751, 13.888, -107.815), 矢量(-84.711, 13.895, -107.857), 矢量(-84.72, 13.883, -107.769), 矢量(-84.681, 13.895, -107.835), 矢量(-84.683, 13.882, -107.759), 矢量(-84.643, 13.895, -107.822), 矢量(-84.637, 13.887, -107.77), 矢量(-84.604, 13.885, -107.745), 矢量(-84.563, 13.894, -107.793), 矢量(-84.561, 13.888, -107.75), 矢量(-84.523, 13.896, -107.791), 矢量(-84.524, 13.887, -107.729), 矢量(-84.485, 13.884, -107.697), 矢量(-84.444, 13.895, -107.759), 矢量(-84.445, 13.888, -107.711), 矢量(-84.415, 13.894, -107.75), 矢量(-84.403, 13.888, -107.694), 矢量(-84.373, 13.896, -107.742), 矢量(-84.375, 13.885, -107.661), 矢量(-84.339, 13.885, -107.649), 矢量(-84.292, 13.896, -107.713), 矢量(-84.298, 13.886, -107.644), 矢量(-84.256, 13.897, -107.715), 矢量(-84.262, 13.883, -107.613), 矢量(-84.227, 13.883, -107.603), 矢量(-84.172, 13.897, -107.684), 矢量(-84.183, 13.886, -107.606), 矢量(-84.146, 13.895, -107.657), 矢量(-84.144, 13.886, -107.592), 矢量(-84.103, 13.896, -107.652), 矢量(-84.104, 13.885, -107.571), 矢量(-84.068, 13.885, -107.56), 矢量(-84.021, 13.896, -107.626), 矢量(-84.023, 13.886, -107.553), 矢量(-83.985, 13.895, -107.598), 矢量(-83.987, 13.886, -107.539)));
+        设置全局变量(botSpawn, 矢量(-84.693, 13.873, -107.681));
+        设置全局变量(playerSpawn, 矢量(-85.624, 14.349, -104.397));
+        设置全局变量(banTpLocation, 矢量(-83.34, 13.248, -58.608));
+        设置全局变量(defaultHorizontalFacingAngle, 161.2);
+    }
+}
+
+规则 ("General song data") {
+    事件 {
+        持续 - 全局;
+    }
+    动作 {
+        设置全局变量(maxBots, 6);
+        设置全局变量(maxArraySize, 1000);
+        设置全局变量(isCompressionEnabled, 真);
+        设置全局变量(compressedElementLength, 7);
+        设置全局变量(compressionInfo, 数组(数组(4, 7, 7), 数组(2, 4, 2)));
+    }
+}
+
+规则 ("pitchArrays") {
+    事件 {
+        持续 - 全局;
+    }
+    动作 {
+        在索引处设置全局变量(pitchArrays, 0, 数组(1943193, 8194150, 1948195, 194819, 5019461, 5431539, 1541511, 5501551, 1550154, 8154622, 4122382, 2415022, 4822502, 2482250, 2246174, 1173817, 4117461, 7481746, 1748174, 1194619, 4519385, 194819, 5019481, 9451946, 1551155, 154651, 1550155, 1155015, 4815502, 2412246, 2246502, 2482250, 2248224, 8224117, 4517461, 7481746, 1748174, 6174517, 4119431, 9381941, 5019481, 9501948, 1950194, 6154315, 3915415, 1155015, 5115501, 5481546, 2241223, 8224150, 2248225, 224822, 5022461, 7411738, 1741174, 6174817, 4617481, 7411946, 1945193, 8501948, 1950194, 8194519, 4615511, 5501546, 5115501, 5511550, 1548155, 224122, 4622465, 224822, 5022482, 2482241, 1745174, 6174817, 4617481, 7461745, 1741));
+    }
+}
+
+规则 ("timeArrays") {
+    事件 {
+        持续 - 全局;
+    }
+    动作 {
+        在索引处设置全局变量(timeArrays, 0, 数组(46, 4046403, 902060, 1030207, 103030, 9030904, 6404640, 3090207, 103020, 6010303, 903090, 4640464, 310020, 6010302, 601030, 3090310, 464046, 4051501, 302060, 1030310, 309046, 4046403, 902060, 1030206, 104030, 9030904, 6404640, 3090206, 104020, 6010303, 903090, 4640464, 309020, 7010302, 601030, 3090310, 464046, 3051601, 302060, 1030310, 309046, 4046403, 902060, 1030206, 103031, 30904, 6404640, 3090206, 103020, 7010303, 903090, 4640464, 309020, 7010302, 601030, 3090310, 463046, 4051601, 302060, 1030309, 310046, 4046403, 902060, 1030206, 103031, 30904, 6404640, 3090206, 103020, 7010303, 903090, 4640464, 309020, 6010402, 601030, 3090309, 464046, 4051601, 302060, 1030309));
+    }
+}
+
+规则 ("chordArrays") {
+    事件 {
+        持续 - 全局;
+    }
+    动作 {
+        在索引处设置全局变量(chordArrays, 0, 数组(202020, 1020202, 202020, 2020102, 202020, 2020202, 102020, 2020202, 202020, 2020202, 202020, 1020202, 202020, 2020102, 202020, 2020202, 102020, 2020202, 202020, 2020202, 202020, 1020202, 202020, 2020102, 202020, 2020202, 102020, 2020202, 202020, 2020202, 202020, 1020202, 202020, 2020102, 202020, 2020202, 102020, 2020202, 202020, 2020202));
+    }
+}
+
+
