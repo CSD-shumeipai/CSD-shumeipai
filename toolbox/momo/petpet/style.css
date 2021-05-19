@@ -1,33 +1,33 @@
 @charset "UTF-8";
 :root {
-  --bg: #F6F6F6;
-  --fg: #F6F6F6;
+  --bg: #fff;
+  --fg: #fff;
   --txt: #727272;
   --txt-light: #727272;
-  --link: #b24a1f;
-  --link-hover: #d55825;
+  --link: #3B4CA9;
+  --link-hover: #3B4CA9;
   --header-txt: #727272;
-  --preview-bg: #F6F6F6;
-  --canvas-bg: #F6F6F6;
-  --input-bg: #F6F6F6;
+  --preview-bg: #fff;
+  --canvas-bg: #fff;
+  --input-bg: #fff;
   --input-border: #D9D9D9;
-  --input-border-hover: #00A0D7;
-  --input-border-focus: #00A0D7;
+  --input-border-hover: #3B4CA9;
+  --input-border-focus: #3B4CA9;
   --input-track-bg: #fff;
-  --input-switch-bg: #F6F6F6;
+  --input-switch-bg: #fff;
   --input-switch-bg-active: #fff;
-  --input-switch-fg: #00A0D7;
-  --input-switch-fg-hover: #fee7a5;
-  --btn-bg: #00A0D7;
-  --btn-color: #F6F6F6;
-  --btn-border: #00A0D7;
-  --btn-hover: #4789A0;
-  --btn-focus: #00A0D7;
+  --input-switch-fg: #3B4CA9;
+  --input-switch-fg-hover: #3B4CA9;
+  --btn-bg: #3B4CA9;
+  --btn-color: #fff;
+  --btn-border: #3B4CA9;
+  --btn-hover: #354497;
+  --btn-focus: #3B4CA9;
   --btn-focus-outline: rgba(254, 220, 125, 0.5);
-  --shadow-color: #00A0D7;
+  --shadow-color: #3B4CA9;
   --shadow: 0px 1px 2px var(--shadow-color);
   --icon: "🌝";
-  --error: #ff6e3f;
+  --error: #3B4CA9;
 }
 
 [data-theme=dark] {
@@ -39,7 +39,7 @@
   --link-hover: white;
   --header-txt: #ffe58d;
   --preview-bg: #fff;
-  --canvas-bg: #F6F6F6;
+  --canvas-bg: #fff;
   --input-bg: #22130f;
   --input-border: rgba(246, 180, 8, 0.5);
   --input-border-hover: rgba(246, 180, 8, 0.8);
@@ -49,7 +49,7 @@
   --input-switch-bg-active: #fed254;
   --input-switch-fg: #fee6a0;
   --input-switch-fg-hover: #fedf87;
-  --btn-bg: #4789A0;
+  --btn-bg: #354497;
   --btn-color: #8b3918;
   --btn-border: #f6b408;
   --btn-hover: #fed254;
